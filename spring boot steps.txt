@@ -1,0 +1,46 @@
+Spring Boot JDBC (MySql)
+------------------------------------
+step 1:- Install MySql.
+create database springbootdb.
+use springbootdb
+
+step 2:-create table user(id int UNSIGNED primary key not null auto_increment,name varchar(30),email varchar(50));
+
+step 3:-add dependencies :- JDBC,MYSQL,WEB
+
+step 4:- create application.properties
+-----------------------------------------------------
+spring.datasource.url=jdbc:mysql://localhost:3306/springbootdb
+spring.datasource.username=root
+spring.datasource.password=sandip
+spring.jpa.hibernate.ddl-auto=create-drop
+--------------------------------------------------------------------------------------------
+step 5:- Create Rest Controller
+--------------------------------
+@RestController
+public class SpringBootJdbcController
+{
+@Autowired
+JdbcTemplate jdbc;
+@RequestMapping("/insert")
+public String index()
+{
+jdbc.execute("insert into user(name,email) values('sandip','sandip@gmail.com')");
+return "data inserted successfully";
+}
+}
+--------------------------------------------
+step 6:-
+@SpringBootApplication
+public class SpringBootJdbcApplication
+{
+main()
+{
+SpringApplication.run(SpringBootJdbcApplication.class,args);
+}
+}
+-----------------------------------------------------------------------------------------------------------
+
+
+ 
+ 
